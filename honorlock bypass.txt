@@ -1,5 +1,8 @@
 edit registry (remove anything and everything VM related)
-HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum
+Registry location: HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum
+
+Use Ctrl+F to locate the following keys
+
 1st: 4d36e967-e325-11ce-bfc1-08002be10318
 2nd: 4d36e968-e325-11ce-bfc1-08002be10318
 3rd: 4d36e965-e325-11ce-bfc1-08002be10318
@@ -18,6 +21,8 @@ right click < new < add DWORD < Name SystemComponet set value to 1
 
 
 
+(optional)
 disconnect NAT from VM, plug in wifi adapter and run wifi adapter for VM but use wifi/ethernet for host OS
+
 
 (the above will remove your "shared" IP address so people cant see you google stuff outside of the VMware session)
