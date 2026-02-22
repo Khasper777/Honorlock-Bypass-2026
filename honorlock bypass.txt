@@ -1,0 +1,23 @@
+edit registry (remove anything and everything VM related)
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum
+1st: 4d36e967-e325-11ce-bfc1-08002be10318
+2nd: 4d36e968-e325-11ce-bfc1-08002be10318
+3rd: 4d36e965-e325-11ce-bfc1-08002be10318
+4th-7th: 4d36e96f-e325-11ce-bfc1-08002be10318
+
+(the above will make it so Honorlock does not detect you are using a virtual machine)
+
+
+remove vm tools from program list
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+
+right click < new < add DWORD < Name SystemComponet set value to 1
+
+(The above will hide the VM from anyone poking around your machine to see if you are running a virtual machine)
+
+
+
+disconnect NAT from VM, plug in wifi adapter and run wifi adapter for VM but use wifi/ethernet for host OS
+
+(the above will remove your "shared" IP address so people cant see you google stuff outside of the VMware session)
