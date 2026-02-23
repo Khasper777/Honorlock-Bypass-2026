@@ -1,12 +1,71 @@
-edit registry (remove anything and everything VM related)
-Registry location: HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum
+(Required downloads)
+Download oracle virtualbox and the extension pack here:
+https://www.virtualbox.org/wiki/Downloads
 
-Use Ctrl+F to locate the following keys
+Download Windows 11 ISO here:
+https://www.microsoft.com/en-us/software-download/windows11
 
-1st: 4d36e967-e325-11ce-bfc1-08002be10318
-2nd: 4d36e968-e325-11ce-bfc1-08002be10318
-3rd: 4d36e965-e325-11ce-bfc1-08002be10318
-4th-7th: 4d36e96f-e325-11ce-bfc1-08002be10318
+(optional but helpful items)
+USB webcam
+USB wifi adapter
+------------------------------------------------------------------------------------------------------------
+Part 1: Creating your virtual Machine
+------------------------------------------------------------------------------------------------------------
+
+1: download all three files and install virtualbox onto your pc. 
+2: Double click on the extension pack .vbox-ext file to install it
+3: ensure you are on the "Home" tab on the left, and click the "New" button at the top
+4: Fill out the following fields
+
+	VM Name: Windows 11
+	VM Folder: select any path you want
+	ISO Image: Click the drop down and locate the "windows11.ISO" file you downloaded, select it.
+
+DESELECT "Proceed with Unattended Installation"
+
+5: Click on "Specify virtual hardware"
+
+	Base Memory: at least 6000-8000 MB
+	Number of CPUs: Depends on your system. for mine i use 12
+
+6: Click on "Specify virtual hard disk" 
+	Disk Size: At least 20GB
+
+7: Click "Finish" button
+
+8: Select your virtual Machine and go to "settings" 
+	System < Motherboard < Chipset: Choose ICH9
+	Display < Screen: Enable 3d Acceleration, make sure video memory is at MAX
+	Storage < Attributes < Make sure "Use Host I/O Cache" Is checked
+	
+
+9: Click OK, go to your newly created VM and press "Start"
+
+10: Virtual Windows 11 session should start
+	IF YOU SEE "Press any key to start from CD or DVD" then do as it states. this will take you into the windows setup.
+
+11: Setup Windows 11 fresh install.
+
+------------------------------------------------------------------------------------------------------------
+2: Bypassing Honorlock
+------------------------------------------------------------------------------------------------------------
+ 
+1: Open Registry Editor
+
+2: go to this location buy locating the Enum folder and double clicking on it on the left side. 
+	HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum
+
+3: Press Ctrl+F and search for the keys. 
+	Once a key is located and changed, double click back on the Enum folder to reset the search.
+
+1st: 4d36e967-e325-11ce-bfc1-08002be10318 <"Friendly Name" Samsung SSD
+2nd: 4d36e968-e325-11ce-bfc1-08002be10318 <"DeviceDesc" Microsoft Basic Display Adapter
+3rd: 4d36e965-e325-11ce-bfc1-08002be10318 <"Friendly Name" Microsoft CD-ROM
+4th-7th: 4d36e96f-e325-11ce-bfc1-08002be10318 <"Device Description" Microsoft Pointing Device
+					      <"Device Description" Microsoft USB pointing Device
+					      <"Device Description" Microsoft HID compliant Mouse
+
+****NOTE what you change it to doesn't really matter, all you are is removing anything that can be tied back to you using a VM, but whats listed above will work.
 
 (the above will make it so Honorlock does not detect you are using a virtual machine)
 
@@ -19,10 +78,22 @@ right click < new < add DWORD < Name SystemComponet set value to 1
 
 (The above will hide the VM from anyone poking around your machine to see if you are running a virtual machine)
 
+****************************************************************************************************************
+After making these changes make sure to reboot the virtual machine.********************************************* 
+****************************************************************************************************************
 
 
-(optional)
+Now install Honorlock.
+
+MAKE SURE YOU LEAVE HONORLOCK OPEN FOR 5 MINUTES BEFORE PRESSING THE "TAKE EXAM" BUTTON. THIS WILL ALLOW IT SOME TIME TO GIVE YOU ANY WARNINGS OR POPUPS STATING YOU ARE USING A VM. IF YOU GET A WARNING OR ERROR YOU DID NOT FOLLOW ALL THE OUTLINED STEPS. 
+
+Optional:
+
+
 disconnect NAT from VM, plug in wifi adapter and run wifi adapter for VM but use wifi/ethernet for host OS
 
-
 (the above will remove your "shared" IP address so people cant see you google stuff outside of the VMware session)
+
+
+___________________________________________________________________________________________________________________
+
